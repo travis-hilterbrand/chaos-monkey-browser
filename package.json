@@ -1,0 +1,45 @@
+{
+  "name": "chaos-monkey-browser",
+  "description": "A 'chaos monkey'-style mischief maker that operates on the client.",
+  "version": "0.1.0",
+  "homepage": "https://github.com/travis-hilterbrand/chaos-monkey-browser",
+  "author": {
+    "name": "Travis Hilterbrand",
+    "url": "https://github.com/travis-hilterbrand/chaos-monkey-browser"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/travis-hilterbrand/chaos-monkey-browser.git"
+  },
+  "bugs": {
+    "url": "https://github.com/travis-hilterbrand/chaos-monkey-browser/issues"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/travis-hilterbrand/chaos-monkey-browser/blob/master/LICENSE"
+    }
+  ],
+  "main": "Gruntfile.js",
+  "engines": {
+    "node": "*"
+  },
+  "scripts": {
+    "test": "./node_modules/.bin/grunt test"
+  },
+  "dependencies": {
+  },
+  "devDependencies": {
+    "grunt": "~0.4",
+    "grunt-contrib-jshint": "~0.1.0",
+    "grunt-contrib-nodeunit": "~0.1.0"
+  },
+  "keywords": [
+  ],
+  "contributors": [
+    {
+      "name": "Travis Hilterbrand",
+      "url": "http://github.com/travis-hilterbrand"
+    }
+  ]
+}

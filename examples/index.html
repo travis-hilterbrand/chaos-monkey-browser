@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+</head>
+<body>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script type="text/javascript" src="../src/chaos-monkey-browser.js"></script>
+<script type="text/javascript" src="../src/chaos-monkey-browser.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function() {
+
+      function onSuccess(data) {
+        console.log('cb success', data);
+      }
+      function onError(xhr, status, error) {
+        console.log('cb failure', error);
+      }
+      function get() {
+        var props = {
+          //url: 'http://localhost:4450/1/Users',
+          url: 'http://localhost:4450/1/Fails',
+          type: 'GET',
+          dataType: 'json',
+          cache: false,
+          success:onSuccess,
+          error:onError
+        };
+        $.ajax(props)
+          .done(function(data) {
+            console.log('deferred success', data);
+          })
+          .fail(function(xhr, status, error) {
+            console.log('deferred failure');
+          });
+      }
+
+      get();
+    });
+  </script>
+</body>
+</html>
