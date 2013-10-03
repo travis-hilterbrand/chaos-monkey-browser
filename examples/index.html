@@ -4,10 +4,11 @@
 </head>
 <body>
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-<script type="text/javascript" src="../src/chaos-monkey-browser.js"></script>
-<script type="text/javascript" src="../src/chaos-monkey-browser.js"></script>
+  <script type="text/javascript" src="sinon-server-1.7.3.js"></script>
+  <script type="text/javascript" src="../src/chaos-monkey-browser.js"></script>
   <script type="text/javascript">
     $(document).ready(function() {
+      window.chaos_monkey({});
 
       function onSuccess(data) {
         console.log('cb success', data);

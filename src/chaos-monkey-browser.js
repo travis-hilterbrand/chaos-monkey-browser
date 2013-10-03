@@ -1,7 +1,8 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     define([], function() {
-      return (root.chaos_monkey = factory());
+      root.chaos_monkey = factory();
+      return root.chaos_monkey;
     });
   } else {
     // Browser globals
@@ -10,10 +11,44 @@
     }
   }
 }(this, function() {
-    console.log('chaos monkey handler installed');
-    var chaos_monkey = {};
+    var MischiefTypes = {
+      delay: function () {
+        //setTimeout(next, 1000 + Math.random() * 5000);
+      },
+      http403: function () {
+/*
+        res.setHeader('Content-Type', 'text/plain');
+        res.writeHead(403, res.headers);
+        res.end('You. Shall not. Pass.');
+*/
+      },
+      http404: function () {
+/*
+        res.setHeader('Content-Type', 'text/plain');
+        res.writeHead(404, res.headers);
+        res.end('This is not the URL you are looking for.');
+*/
+      }
+    };
+    var ChaosMonkey = function(options) {
+    };
+    ChaosMonkey.prototype.initialize = function() {
+      console.log('chaos monkey handler installed');
+      this.server = sinon.fakeServer.create();
+    };
+    ChaosMonkey.prototype.destroy = function() {
+      if (this.server) {
+        this.server.restore();
+      }
+    };
 
-    return chaos_monkey;
+    var ChaosMonkeyInterface = function(options) {
+      if (!ChaosMonkeyInterface._) {
+        ChaosMonkeyInterface._ = new ChaosMonkey();
+        ChaosMonkeyInterface._.initialize();
+      }
+    };
+    return ChaosMonkeyInterface;
 }));
 
 /*
