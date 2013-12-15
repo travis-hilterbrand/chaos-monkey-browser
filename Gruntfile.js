@@ -1,11 +1,13 @@
 /*
- * grunt-file-creator
- * Copyright (c) 2012 Travis Hilterbrand, contributors
+ * chaos-monkey-browser
+ * Copyright (c) 2013 Travis Hilterbrand, contributors
  * Licensed under the MIT license.
  */
-
  module.exports = function(grunt) {
   "use strict";
+
+  var srcPath = 'src/';
+  var releasePath = '';
 
   grunt.initConfig({
     jshint: {
@@ -30,19 +32,24 @@
       }
     },
 
-    // Unit tests.
-    nodeunit: {
-      tests: ['test/*-test.js']
+    // release / minimization
+    uglify: {
+      options: {
+        mangle: true
+      },
+      core: {
+        src: srcPath+"chaos-monkey-browser.js",
+        dest: releasePath+"chaos-monkey-browser.min.js"
+      }
     }
   });
 
   grunt.loadNpmTasks('grunt-contrib-jshint');
-  grunt.loadNpmTasks('grunt-contrib-nodeunit');
+  grunt.loadNpmTasks('grunt-contrib-uglify');
 
-  // Whenever the 'test' task is run, first create some files to be cleaned,
-  // then run this plugin's task(s), then test the result.
-  grunt.registerTask('test', ['nodeunit']);
+  // Tasks
+  grunt.registerTask('release', ['uglify']);
 
   // By default, lint and run all tests.
-  grunt.registerTask('default', ['jshint', 'test']);
+  grunt.registerTask('default', ['jshint', 'release']);
 };

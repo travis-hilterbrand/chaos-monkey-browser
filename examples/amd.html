@@ -5,10 +5,17 @@
 <body>
   <script src="require.js"></script>
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-  <script type="text/javascript" src="sinon-server-1.7.3.js"></script>
   <script type="text/javascript">
   require(['../src/chaos-monkey-browser'], function(ChaosMonkey) {
-    ChaosMonkey();
+    var props = {
+      allowedMethods:['GET'],
+      probability:1.0,
+      mischiefTypes:[
+        ChaosMonkey.defaultMischiefTypes.delay,
+        ChaosMonkey.defaultMischiefTypes.http403
+      ]
+    };
+    ChaosMonkey(props);
 
     $(document).ready(function() {
 
@@ -20,7 +27,6 @@
       }
       function get() {
         var props = {
-          //url: 'http://localhost:4450/1/Users',
           url: 'http://localhost:4450/1/Fails',
           type: 'GET',
           dataType: 'json',
@@ -33,11 +39,11 @@
             console.log('deferred success', data);
           })
           .fail(function(xhr, status, error) {
-            console.log('deferred failure');
+            console.log('deferred failure', arguments);
           });
       }
 
-      get();
+      get();  
     });
   });
   </script>

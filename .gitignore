@@ -1,3 +1,4 @@
 # node specific
 npm-debug.log
 node_modules/
+_output/
