@@ -35,7 +35,13 @@
     // release / minimization
     uglify: {
       options: {
-        mangle: true
+        mangle: true,
+        banner:
+"/*\n" +
+" * chaos-monkey-browser\n" +
+" * Copyright (c) 2013 Travis Hilterbrand, contributors\n" +
+" * Licensed under the MIT license.\n" +
+" */\n"
       },
       core: {
         src: srcPath+"chaos-monkey-browser.js",
