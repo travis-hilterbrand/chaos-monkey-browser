@@ -20,7 +20,6 @@
     }
   }
 }(this, function() {
-  "use strict";
 
   var MischiefTypes = {
     delay: function(interface, dfd, orig, ajaxOptions) {
@@ -106,6 +105,6 @@
       ChaosMonkeyInterface._ = new ChaosMonkeyAPI(options);
     }
   };
-  ChaosMonkeyInterface.defaultMischiefTypes = MischiefTypes;
+  ChaosMonkeyInterface.MischiefTypes = MischiefTypes;
   return ChaosMonkeyInterface;
 }));

@@ -1,29 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <style type="text/css">
+  body {
+    font-family: "Calibri", "Arial", "Helvetica";
+    font-size: 15px;
+  }
+  .text {
+    margin: 20px 20px;
+  }
+</style>
 </head>
 <body>
-  <script src="require.js"></script>
+  <script type="text/javascript" src="require.js"></script>
+  <script type="text/javascript" src="json2.js"></script>
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
   <script type="text/javascript">
   require(['../src/chaos-monkey-browser'], function(ChaosMonkey) {
-    var props = {
-      allowedMethods:['GET'],
-      probability:1.0,
-      mischiefTypes:[
-        ChaosMonkey.defaultMischiefTypes.delay,
-        ChaosMonkey.defaultMischiefTypes.http403
-      ]
-    };
-    ChaosMonkey(props);
-
     $(document).ready(function() {
 
+      var props = {
+        allowedMethods:['GET'],
+        probability:1.0,
+        mischiefTypes:[
+          ChaosMonkey.MischiefTypes.delay,
+          ChaosMonkey.MischiefTypes.http403
+        ]
+      };
+      ChaosMonkey(props);
+
+      function log(message, data) {
+        var s = message;
+        if (data) {
+          s += '<i>' + JSON.stringify(data) + '</i>';
+        }
+        $('#log').append('<p>' + s + '</p>');
+      }
       function onSuccess(data) {
-        console.log('cb success', data);
+        log('cb success', data);
       }
       function onError(xhr, status, error) {
-        console.log('cb failure', error);
+        log('cb failure', error);
       }
       function get() {
         var props = {
@@ -34,12 +51,15 @@
           success:onSuccess,
           error:onError
         };
+
+        log('<b>calling ajax method [' + props.url + ']</b>');
+
         $.ajax(props)
           .done(function(data) {
-            console.log('deferred success', data);
+            log('deferred success', data);
           })
           .fail(function(xhr, status, error) {
-            console.log('deferred failure', arguments);
+            log('deferred failure', arguments);
           });
       }
 
@@ -47,5 +67,8 @@
     });
   });
   </script>
+
+  <h4>Messages</h4>
+  <div id="log" class="text"></div>
 </body>
 </html>

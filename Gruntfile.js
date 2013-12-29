@@ -28,7 +28,8 @@
         boss: true,
         eqnull: true,
         node: true,
-        es5: true
+        es5: true,
+        strict: false
       }
     },
 
