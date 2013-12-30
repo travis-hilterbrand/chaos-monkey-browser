@@ -17,7 +17,7 @@ against random failure.
 What is chaos-monkey-browser?
 -----------
 
-chaos-monkey-browser is failure module that installs entirely on the client.  This is particularly useful for apps that use multiple backends or when developers don't have an easy method for modifying a remote dependency.
+chaos-monkey-browser is a failure module that installs entirely on the client.  This is particularly useful for apps that use multiple backends or when developers don't have an easy method for modifying a remote dependency.
 
 Inspired by [Chaos Monkeyware][monkey] 
 
