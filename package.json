@@ -1,7 +1,7 @@
 {
   "name": "chaos-monkey-browser",
   "description": "A 'chaos monkey'-style mischief maker that operates on the client.",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "homepage": "https://github.com/travis-hilterbrand/chaos-monkey-browser",
   "author": {
     "name": "Travis Hilterbrand",
@@ -42,7 +42,8 @@
     "ajax",
     "chaos",
     "chaos-monkey",
-    "chaosmonkey"
+    "chaosmonkey",
+    "chaos monkey"
   ],
   "contributors": [
     {
