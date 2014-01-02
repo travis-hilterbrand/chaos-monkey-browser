@@ -52,10 +52,14 @@
   ChaosMonkeyAPI.prototype.initialize = function(options) {
     options = options || {};
 
-    // setup mischief types
+    // setup options
+    var allMischiefTypes = [];
+    $.each(MischiefTypes, function(key, value) {
+      allMischiefTypes.push(value);
+    });
     options.probability = options.probability || 0.1;
     options.allowedMethods = options.allowedMethods || ['GET','POST','PUT','DELETE'];
-    options.mischiefTypes = options.mischiefTypes || MischiefTypes;
+    options.mischiefTypes = options.mischiefTypes || allMischiefTypes;
     this.options = options;
 
     // xhr hijack
@@ -68,7 +72,7 @@
   ChaosMonkeyAPI.prototype.ajax = function(url, ajaxOptions) {
     // If url is an object, simulate pre-1.5 signature
     if (typeof url === 'object') {
-      ajaxOptions = url;
+      ajaxOptions = $.extend(true, {}, url);
       url = undefined;
     }
 
