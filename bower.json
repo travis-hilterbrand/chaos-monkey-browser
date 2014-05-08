@@ -1,0 +1,25 @@
+{
+  "name": "chaos-monkey-browser",
+  "version": "0.1.4",
+  "main": "chaos-monkey-browser.min.js",
+  "license": "MIT",
+  "dependencies": {
+    "jquery": "*"
+  },
+  "keywords": [
+    "development",
+    "javascript",
+    "jquery",
+    "ajax",
+    "chaos",
+    "chaos-monkey",
+    "chaosmonkey",
+    "chaos monkey"
+  ],
+  "contributors": [
+    {
+      "name": "Travis Hilterbrand",
+      "url": "http://github.com/travis-hilterbrand"
+    }
+  ]
+}
